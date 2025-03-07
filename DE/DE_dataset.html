@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview of Spike Camera Depth Estimation Datasets</title>
+    <!-- Using the same style as OF_dataset -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        nav {
+            background: #acb2b8;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        nav ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li img {
+            height: 50px;
+            margin-right: 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #1a252f;
+            border-radius: 4px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .content-box {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 4rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .dataset-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .dataset-item:last-child {
+            border-bottom: none;
+        }
+
+        .dataset-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .dataset-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .dataset-features {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+
+        .dataset-features h4 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .dataset-features ul {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        .dataset-features li {
+            margin-bottom: 0.5rem;
+        }
+
+        .download-links {
+            margin-top: 1rem;
+        }
+
+        .download-links a {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            margin-right: 1rem;
+            color: #5a8cae;
+            text-decoration: none;
+            border: 1px solid #6995b2;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .download-links a:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        .scene-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .scene-table th, .scene-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .scene-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+        }
+
+        .scene-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .note {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .dataset-examples {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .example-image {
+            width: 100%;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .example-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .paper-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .paper-link:hover {
+            text-decoration: underline;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Overview of Spike Camera Depth Estimation Datasets</h1>
+        <p>Collection and organization of spike camera depth estimation datasets to promote algorithm research and development</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><img src="./RGB_SPIKE_LOGO.png" alt="Logo"></li>
+            <li><a href="#stereo">Stereo Depth Estimation Datasets</a></li>
+            <li><a href="#mono">Monocular Depth Estimation Datasets</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="content-box" id="stereo">
+            <div class="dataset-item">
+                <h2 class="dataset-title">Stereo Depth Estimation Datasets: PKU-Spike-Stereo and Spike-KITTI</h2>
+                <p class="dataset-description">These two datasets were published in the paper <a href="https://drive.google.com/file/d/1jZPPhOxZkcDtTGFxhvGD1AKNS4CGyuHb/view" class="paper-link">Learning Stereo Depth Estimation with Bio-inspired Spike Cameras</a>, providing comprehensive stereo depth estimation data support for both real-world scenes and simulated environments.</p>
+
+                <div class="dataset-examples">
+                    <div class="example-image">
+                        <img src="./stereo_depth.png" alt="Stereo Depth Estimation Example">
+                    </div>
+                </div>
+
+                <h3 class="section-title">PKU-Spike-Stereo Dataset</h3>
+                <div class="dataset-features">
+                    <h4>System Configuration</h4>
+                    <ul>
+                        <li>Dual Spike Camera System: 400×250 resolution, 20kHz sampling rate</li>
+                        <li>ZED Depth Camera: 1280×720@30fps, providing synchronized depth labels</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-features">
+                    <h4>Dataset Features</h4>
+                    <ul>
+                        <li>Precise Spatiotemporal Alignment: Accurate synchronization of spike streams and depth maps through professional image registration</li>
+                        <li>Rich Scene Types: Including 5 indoor scenes (e.g., Ball, Bottle) and 5 outdoor scenes (e.g., Chair, Plant)</li>
+                        <li>Large-scale Samples: Total of 10,750 pairs of spike stream data with 877 sets of high-quality synchronized depth labels</li>
+                    </ul>
+                </div>
+
+                <table class="scene-table">
+                    <thead>
+                        <tr>
+                            <th>Typical Scene Type</th>
+                            <th>Sample Pairs</th>
+                            <th>Time Steps</th>
+                            <th>Depth Labels</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Outdoor "Chair" Class</td>
+                            <td>1,750</td>
+                            <td>700,000</td>
+                            <td>148</td>
+                        </tr>
+                        <tr>
+                            <td>Indoor "Ball" Class</td>
+                            <td>2,500</td>
+                            <td>1,000,000</td>
+                            <td>82</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="dataset-features">
+                    <h4>Core Advantages</h4>
+                    <ul>
+                        <li>Optimized for High-speed Motion: Particularly suitable for depth estimation of fast-moving objects like ball sports</li>
+                        <li>Solving Traditional Problems: Effectively overcomes motion blur issues in high-speed motion scenes with traditional cameras</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">Spike-KITTI Dataset</h3>
+                <div class="dataset-features">
+                    <h4>Dataset Overview</h4>
+                    <ul>
+                        <li>Based on KITTI Dataset Conversion: Converting classic dataset videos into spike stream format</li>
+                        <li>Data Scale: Contains 200 pairs of stereo images, 160 for training and 40 for testing</li>
+                        <li>Features: Fully preserves road scene characteristics, provides reliable sparse disparity labels</li>
+                        <li>Application: Mainly used for model pre-training and algorithm validation</li>
+                    </ul>
+                </div>
+
+                <div class="download-links">
+                    <a href="#">Download PKU-Spike-Stereo Dataset</a>
+                    <a href="#">Download Spike-KITTI Dataset</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-box" id="mono">
+            <div class="dataset-item">
+                <h2 class="dataset-title">Monocular Depth Estimation Datasets: DENSE-spike and Outdoor-spike</h2>
+                <p class="dataset-description">These two datasets were published in the paper <a href="https://fq.pkwyx.com/default/https/www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136670034.pdf" class="paper-link">Spike Transformer: Monocular Depth Estimation for Spiking Camera</a>, providing monocular depth estimation data support for both synthetic environments and real-world scenes.</p>
+
+                <h3 class="section-title">DENSE-spike Dataset</h3>
+                <div class="dataset-features">
+                    <h4>Data Generation Process</h4>
+                    <ul>
+                        <li>Based on CARLA simulator for basic scene generation</li>
+                        <li>Video frame rate increased to 3840fps</li>
+                        <li>Professional algorithm conversion to spike stream data</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-features">
+                    <h4>Data Specifications</h4>
+                    <ul>
+                        <li>Data Dimensions: 346×260×128 (128 timestamps)</li>
+                        <li>Data Split: 8 sequences total (5 training/2 validation/1 testing)</li>
+                        <li>Advantages: Includes high-precision depth labels, covers diverse weather and lighting conditions</li>
+                        <li>Limitations: Domain gap exists between virtual scenes and real environments</li>
+                    </ul>
+                </div>
+
+                <h3 class="section-title">Outdoor-spike Dataset</h3>
+                <div class="dataset-features">
+                    <h4>Collection and Parameters</h4>
+                    <ul>
+                        <li>Collection Device: Professional Vidar spike camera</li>
+                        <li>Resolution and Frame Rate: 400×250@40kHz</li>
+                        <li>Data Scale: Contains 33 real road scene sequences</li>
+                    </ul>
+                </div>
+
+                <div class="dataset-features">
+                    <h4>Data Characteristics</h4>
+                    <ul>
+                        <li>Real Environment: Includes natural noise and actual lighting variations</li>
+                        <li>Application Scenarios: Simulates real autonomous driving perspective</li>
+                        <li>Usage Limitations: Mainly used for model generalization validation (no depth labels)</li>
+                    </ul>
+                </div>
+
+                <div class="download-links">
+                    <a href="#">Download DENSE-spike Dataset</a>
+                    <a href="#">Download Outdoor-spike Dataset</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="page__footer">
+            <footer>
+                <div class="page__footer-follow">
+                    <ul class="social-icons"></ul>
+                </div>
+                <div class="page__footer-copyright">&copy; Spike Dataset</div>
+            </footer>
+        </div>
+    </main>
+
+    <div class="back-to-top" id="back-to-top">&#8679;</div>
+
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
