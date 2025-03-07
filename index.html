@@ -20,6 +20,19 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-left: 40px;
         }
 
         h1 {
@@ -98,15 +111,19 @@
 </head>
 <body>
     <div class="container">
-        <h1>Datasets</h1>
-        <div class="dropdown">
-            <button class="datasets-btn">Datasets</button>
-            <div class="dropdown-content">
-                <a href="OP/Spikesee/OF_dataset.html">光流估计</a>
-                <a href="#">深度估计</a>
-                <a href="#">其他数据集</a>
+        <img src="./RGB_SPIKE_LOGO.png" alt="Logo" class="logo" >
+        <div class="content">
+            <h1>Spikesee</h1>
+            <div class="dropdown">
+                <button class="datasets-btn">Datasets</button>
+                <div class="dropdown-content">
+                    <a href="OP/Spikesee/OF_dataset.html">光流估计</a>
+                    <a href="DE/DE_dataset.html">深度估计</a>
+                    <a href="#">其他数据集</a>
+                </div>
             </div>
         </div>
+        
     </div>
 </body>
 </html>
