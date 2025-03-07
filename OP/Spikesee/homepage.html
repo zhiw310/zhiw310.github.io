@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <link rel="stylesheet" href="assets/css/slider/ideal-image-slider.css" />
+    <link rel="stylesheet" href="assets/css/slider/themes/default.css" />
+    <meta charset="utf-8" />
+    <!-- begin SEO -->
+    <title>Spike Dataset</title>
+    <meta property="og:locale" content="en-US" />
+    <meta property="og:site_name" content="DeeperAction" />
+    <meta property="og:title" content="Spike Dataset" />
+    <link rel="canonical" href="index.html" />
+    <meta property="og:url" content="https://chunyu-he.github.io/" />
+    <meta property="og:description" content="About me" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      document.documentElement.className =
+        document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
+    </script>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <meta http-equiv="cleartype" content="on" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/favicon32.png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="images/favicon64.png"
+      sizes="64x64"
+    />
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="stylesheet" href="assets/css/academicons.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* 手风琴容器样式 */
+      .accordion {
+        display: flex;
+        width: 100%;
+        height: 400px;
+        overflow: hidden;
+        perspective: 1000px; /* 添加透视效果 */
+      }
+      .accordion-item {
+        flex: 1;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: flex 0.5s ease, transform 0.5s ease; /* 添加 transform 过渡效果 */
+        cursor: pointer;
+        transform-style: preserve-3d; /* 保持 3D 变换 */
+      }
+
+      /* 鼠标悬停时放大图片并添加 3D 旋转效果 */
+      .accordion-item:hover {
+        flex: 3;
+        transform: rotateY(10deg); /* 添加 3D 旋转效果 */
+      }
+    </style>
+  </head>
+  <style>
+    /* 返回顶部按钮样式 */
+    #back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #000;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+
+  <body>
+    <!-- 新增：左下角圆球 -->
+    <div class="floating-ball" id="floating-ball"></div>
+    <!-- 新增：弹出的图标容器 -->
+    <div class="floating-icons" id="floating-icons">
+      <!-- 回到首页图标 -->
+      <a href="index.html" class="floating-icon">
+        <span class="tooltip">回到首页</span>
+      </a>
+      <!-- 前往数据库图标 -->
+      <a href="https://huggingface.co/hcysiren" class="floating-icon">
+        <span class="tooltip">前往huggingface数据库主页</span>
+      </a>
+      <!-- 前往特定网页图标 -->
+      <a href="https://spikecv.github.io/zh/index.html" class="floating-icon">
+        <span class="tooltip">前往Spikecv</span>
+      </a>
+      <a href="https://github.com/chenkang455/Spike-Zoo" class="floating-icon">
+        <span class="tooltip">前往Spikezoo开发工具</span>
+      </a>
+    </div>
+    <script>
+      const floatingBall = document.getElementById("floating-ball");
+      const floatingIcons = document.getElementById("floating-icons");
+
+      // 鼠标移入圆球显示图标
+      floatingBall.addEventListener("mouseenter", () => {
+        floatingIcons.style.display = "flex";
+      });
+
+      // 鼠标移出圆球和图标区域隐藏图标
+      const hideIcons = () => {
+        floatingIcons.style.display = "none";
+      };
+
+      floatingBall.addEventListener("mouseleave", () => {
+        // 短暂延迟，避免鼠标移动到图标上时闪烁
+        setTimeout(() => {
+          if (!floatingIcons.matches(":hover")) {
+            hideIcons();
+          }
+        }, 100);
+      });
+
+      floatingIcons.addEventListener("mouseleave", () => {
+        hideIcons();
+      });
+    </script>
+  </body>
+
+  <body>
+    <div
+      style="
+        background-image: url('images/institute_logo.png');
+        background-size: 100% 100%;
+        height: 200px;
+        border: 20px;
+        min-width: 300px;
+      "
+      class="center"
+    >
+      <div
+        style="
+          background-color: rgba(256, 256, 256, 0.6);
+          width: 100%;
+          height: 100%;
+          min-width: 760px;
+        "
+      >
+        <div
+          style="width: 96%; height: 96%; margin: 2%; min-width: 760px"
+          class="center"
+        >
+          <p
+            style="
+              color: rgb(5, 32, 55);
+              font-size: 32px;
+              margin: 0px;
+              text-align: center;
+            "
+          >
+            <b>Spike Dataset Family</b>
+          </p>
+          <!-- 修改此处，增加底部外边距 -->
+          <p
+            style="
+              color: rgb(49, 5, 56);
+              font-size: 20px;
+              margin: 100px 0px 0px 0px;
+              text-align: center;
+              opacity: 0.5;
+            "
+          >
+            <b>School of Computer Science, Peking University</b>
+          </p>
+          <p
+            style="
+              color: rgb(49, 5, 56);
+              font-size: 20px;
+              margin: 0px;
+              text-align: center;
+              opacity: 0.5;
+            "
+          >
+            <b
+              >State Key Laboratory for Multimedia Information Processing,
+              Peking University</b
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
+    <div class="masthead">
+      <div class="masthead__inner-wrap">
+        <div class="masthead__menu">
+          <nav id="site-nav" class="greedy-nav">
+            <button>
+              <div class="navicon"></div>
+            </button>
+            <ul class="visible-links clearfix">
+              <li class="masthead__menu-item masthead__menu-item--lg">
+                <a href="index.html">
+                  <img src="images/RGB_SPIKE_LOGO.png" style="height: 54px" />
+                </a>
+              </li>
+              <li class="masthead__menu-item">
+                <div class="dropdown">
+                  <span><a href="index.html">Datasets</a></span>
+                  <div class="dropdown-content">
+                    <p>
+                      <a href="Datasets/motVidarReal2020.html"
+                        >motVidarReal2020</a
+                      >
+                    </p>
+                    <!-- <p><a href="Datasets/multisports.html">MultiSports</a></p> -->
+                    <!-- 这里是下拉菜单位置，未来有多少数据集就可以采用这种下拉菜单的设置 -->
+                  </div>
+                </div>
+              </li>
+              <li class="masthead__menu-item">
+                <a href="./Articles.html">Articles</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a href="https://github.com/chenkang455/Spike-Zoo">Spikezoo</a>
+              </li>
+              <li class="masthead__menu-item">
+                <a href="Datasets/Lab_Members.html">Lab Members</a>
+              </li>
+              <!-- 这里是并排的其他按钮 -->
+            </ul>
+            <ul class="hidden-links hidden"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div id="main" role="main">
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+        <meta itemprop="headline" content="Spike Dataset" />
+        <meta itemprop="description" content="About me" />
+        <div class="page__inner-wrap">
+          <header>
+            <h1 class="page__title" itemprop="headline">Spike Dataset</h1>
+          </header>
+          <section class="page__content" itemprop="text">
+            <p>
+              Spike Dataset for Reconstruction,Optical Flow,Depth Estimation and
+              so on<br />
+              <em>March 2025</em>
+            </p>
+            <!-- <div id="slider_title"> 
+                        <img data-src="" data-src-2x=""
+                            src="images/refinedaction_ori.gif" title="" alt="Track 1: FineAction" /> 
+                        <img data-src=""
+                            data-src-2x="" src="images/sports_ori.gif" title="" alt="Track 2: MultiSports" />
+                        <img data-src=""
+                            data-src-2x="" src="images/sports_mot.gif" title="" alt="Track 3: SportsMOT" /> 
+                        <img
+                            data-src="" data-src-2x="" src="images/track4_ori.gif" title=""
+                            alt="Track 4: Kinetics-TPS" />
+                        <img
+                            data-src="" data-src-2x="" src="images/qv.gif" title=""
+                            alt="Track 5: UrbanPipe" />
+                    </div> -->
+            <!-- 上述被注释掉的部分是一个幻灯片元素，可以通过点击左右切换，但是这样太不直接，现在采用手风琴元素 -->
+            <!-- 手风琴容器 -->
+            <div class="accordion">
+              <!-- 图片项 1 -->
+              <a
+                href="https://huggingface.co/Datasets/hcysiren/motVidarReal2020"
+                class="accordion-item"
+                style="background-image: url('images/motVidarReal2020.png')"
+                >motVidarReal2020</a
+              >
+              <!-- 图片项 2 -->
+              <div
+                class="accordion-item"
+                style="background-image: url('images/2.jpg')"
+              ></div>
+              <!-- 图片项 3 -->
+              <div
+                class="accordion-item"
+                style="background-image: url('images/3.jpg')"
+              ></div>
+            </div>
+
+            <h2 id="news">NEWS</h2>
+            <ul>
+              <li>
+                <u>2022-09-26</u><br />
+                <ul>
+                  <li>
+                    Challenge Results have been updated in
+                    <a href="results/index.html">Challenge Results</a>.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <h2 id="attending-the-workshop">Attending the Workshop</h2>
+            <p class="text-justify">
+              ECCV 2022 is planned to be held in Tel-Aviv on Oct. 24-28 2022.
+              Decision on physical vs. hybrid vs. virtual event will be made at
+              a later stage. The workshop will be held on Monday 24th October
+              2022 as a half day event. Please refer to
+              <a href="program/index.html">this page</a> for more information.
+            </p>
+            <h2 id="aims-and-scope">Aims and Scope</h2>
+            <p class="text-justify">
+              DeeperAction aims to advance the area of video understanding with
+              a shift from traditional action recognition to deeper
+              understanding tasks of action, with a focus on detailed
+              understanding of human action and anomaly recognition from videos
+              in the wild. Specifically, we benchmark five related tasks on
+              detailed action understanding by introducing newly-annotated and
+              high-quality Datasets, and organize the video action understanding
+              challenge on these benchmarks.
+            </p>
+
+            <h3 id="temporal-action-localization">
+              <a href="Datasets/fineaction.html" title="Tracks1-FineAction"
+                >FineAction Track on Temporal Action Localization</a
+              >
+            </h3>
+            <h3 id="temporal-action-localization">
+              <a href="Datasets/multisports.html" title="Tracks1-FineAction"
+                >MultiSports Track on Human Action Detection</a
+              >
+            </h3>
+            <h3 id="temporal-action-localization">
+              <a href="Datasets/sportsmot.html" title="Tracks1-FineAction"
+                >SportsMOT Track on Multi-actor Tracking</a
+              >
+            </h3>
+            <h3 id="temporal-action-localization">
+              <a href="Datasets/kineticstps.html" title="Tracks1-FineAction"
+                >Kinetics-TPS Track on Part-level Action Parsing</a
+              >
+            </h3>
+            <h3 id="temporal-action-localization">
+              <a href="Datasets/urbanpipe.html" title="Tracks1-FineAction"
+                >UrbanPipe Track on Fine-grained Video Anomaly Recognition</a
+              >
+            </h3>
+          </section>
+          <footer class="page__meta"></footer>
+        </div>
+      </article>
+    </div>
+    <div class="page__footer">
+      <footer>
+        <div class="page__footer-follow">
+          <ul class="social-icons"></ul>
+        </div>
+        <div class="page__footer-copyright">&copy; Spike Dataset</div>
+      </footer>
+    </div>
+    <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/slider/ideal-image-slider.min.js"></script>
+    <script src="assets/js/slider/iis-bullet-nav.js"></script>
+    <script src="assets/js/slider/iis-captions.js"></script>
+    <script>
+      var slider_title = new IdealImageSlider.Slider({
+        selector: "#slider_title",
+        height: "200",
+        effect: "fade",
+      });
+      slider_title.addBulletNav();
+      slider_title.addCaptions();
+      slider_title.start();
+    </script>
+    <!-- 返回顶部按钮 -->
+    <div id="back-to-top">返回顶部</div>
+    <script>
+      // 获取返回顶部按钮元素
+      const backToTopButton = document.getElementById("back-to-top");
+
+      // 监听窗口滚动事件
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 200) {
+          // 当页面滚动超过 200 像素时显示按钮
+          backToTopButton.style.display = "block";
+        } else {
+          // 否则隐藏按钮
+          backToTopButton.style.display = "none";
+        }
+      });
+
+      // 监听按钮点击事件
+      backToTopButton.addEventListener("click", () => {
+        // 滚动到页面顶部
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth", // 平滑滚动效果
+        });
+      });
+    </script>
+    <style>
+      /* 新增样式：左下角圆球 */
+      .floating-ball {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 50px;
+        height: 50px;
+        background-image: url("images/RGB_SPIKE_LOGO.png"); /* 替换为你的圆球图标路径 */
+        background-size: cover;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      /* 新增样式：弹出的图标容器 */
+      .floating-icons {
+        display: none;
+        position: fixed;
+        bottom: 80px;
+        left: 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* 新增样式：图标 */
+      .floating-icon {
+        width: 30px;
+        height: 30px;
+        background-image: url("images/RGB_SPIKE_LOGO.png"); /* 替换为你的图标路径 */
+        background-size: cover;
+        cursor: pointer;
+        position: relative;
+      }
+
+      /* 自定义工具提示样式 */
+      .tooltip {
+        visibility: hidden;
+        width: 120px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: 50%; /* 垂直居中 */
+        left: 120%; /* 显示在图标右侧 */
+        transform: translateY(-50%); /* 垂直居中 */
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .floating-icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </body>
+</html>
